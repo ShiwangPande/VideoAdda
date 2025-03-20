@@ -1,12 +1,21 @@
 'use client'
 
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { SearchIcon, XIcon } from "lucide-react";
-import {  useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { APP_URL } from "@/constants";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export const SearchInput = () => {
+    return (
+        <Suspense fallback={<Skeleton className="h-10 w-full" />}>
+            <SearchInputSuspense />
+        </Suspense>
+    )
+}
+
+const SearchInputSuspense = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
     const query = searchParams.get("query") || "";
@@ -20,25 +29,25 @@ export const SearchInput = () => {
         const newQuery = value.trim();
 
         url.searchParams.set("query", encodeURIComponent(newQuery));
-        if(categoryId){
+        if (categoryId) {
             url.searchParams.set("categoryId", categoryId);
         }
-        if(newQuery === ""){
+        if (newQuery === "") {
             url.searchParams.delete("query")
         }
 
         setValue(newQuery);
         router.push(url.toString());
     }
-    return ( 
+    return (
         <form className="flex w-full max-w-[600px]" onSubmit={handleSearch}>
             <div className="relative w-full">
-                <input 
-                type="text"
-                onChange={(e)=> setValue(e.target.value)}
-                value={value} 
-                placeholder="Search"
-                 className="w-full pl-4 py-2 pr-12 rounded-l-full border focus:outline-none focus:border-blue-500" />
+                <input
+                    type="text"
+                    onChange={(e) => setValue(e.target.value)}
+                    value={value}
+                    placeholder="Search"
+                    className="w-full pl-4 py-2 pr-12 rounded-l-full border focus:outline-none focus:border-blue-500" />
                 {/* Todo: add remove button */}
                 {/* <button type="button" onClick={handleRemove} className="absolute border-none  hover:border-gray-200 hover:bg-gray-200 rounded-full p-0  right-0 top-0 h-full    ">
                     <Plus className="size-10 rotate-45 -z-0" strokeWidth={0.5}/>
@@ -49,19 +58,19 @@ export const SearchInput = () => {
                         type="button"
                         variant="ghost"
                         size="icon"
-                        onClick={()=> setValue("")}
+                        onClick={() => setValue("")}
                         className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full"
                     >
-                        <XIcon className="text-gray-500"/>
+                        <XIcon className="text-gray-500" />
                     </Button>
                 )}
 
             </div>
-            <button 
+            <button
                 disabled={!value.trim()}
-                type="submit" 
+                type="submit"
                 className="bg-gray-100 px-5 py-2.5 border border-l-0 rounded-r-full hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed">
-                <SearchIcon className="size-5"/>
+                <SearchIcon className="size-5" />
             </button>
         </form>
     );
