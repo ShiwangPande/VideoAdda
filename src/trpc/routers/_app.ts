@@ -1,5 +1,6 @@
-import { categoriesRouter } from '@/modules/categories/server/procedures';
 import {createTRPCRouter } from '../init';
+import { categoriesRouter } from '@/modules/categories/server/procedures';
+import { usersRouter } from '@/modules/users/server/procedures';
 import { studioRouter } from '@/modules/studio/server/procedures';
 import { videoRouters } from '@/modules/videos/server/procedures';
 import { videoViewsRouter } from '@/modules/video-views/server/procedures';
@@ -12,6 +13,7 @@ import { searchoRouter } from '@/modules/search/server/procedures';
 import { playlistsRouters } from '@/modules/playlists/server/procedures';
 
 export const appRouter = createTRPCRouter({
+    users: usersRouter,
     studio: studioRouter,
     videos: videoRouters,
     search: searchoRouter,

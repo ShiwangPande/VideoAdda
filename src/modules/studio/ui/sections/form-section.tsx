@@ -218,7 +218,7 @@ const FormSectionSuspense = ({videoId}: FormSectionProps)=>{
         />
        <Form {...form}>  
        <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between  ">
             <div>
                 <h1 className="text-2xl font-bold">Video details</h1>
                 <h2 className="text-xs text-muted-foreground">Manage your video details</h2>
