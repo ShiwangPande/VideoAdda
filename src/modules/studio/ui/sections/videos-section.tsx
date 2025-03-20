@@ -166,7 +166,6 @@ const VideosSectionSuspense = () => {
           </TableBody>
         </Table>
       </div>
-      {/* {JSON.stringify(videos)} */}
       <InfiniteScroll
         isManual
         hasNextPage={query.hasNextPage}
