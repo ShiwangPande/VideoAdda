@@ -11,10 +11,10 @@ export const StudioNavbar = () => {
                 {/* Menu and logo */}
                <div className="flex items-center flex-shrink-0">
                <SidebarTrigger/>
-               <Link href="/studio">
+               <Link prefetch  href="/studio">
                <div className="p-4 flex items-center gap-1">
                 <Image src="/logo.svg" alt="Logo" width={50} height={50} />
-                <p className="text-xl font-semibold tracking-tight">Studio</p>
+                <p className="text-xl font-semibold tracking-tight hidden md:block">Studio</p>
                 </div>
                </Link>
                </div>
