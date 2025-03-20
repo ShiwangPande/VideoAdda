@@ -17,4 +17,3 @@ export const HistoryView = () => {
   );
 };
 
-export default HistoryView;
