@@ -30,7 +30,7 @@ export const VideoDescription = ({
                 </span>
             </div>
             <div className="relative">
-                <p className={cn("text-sm whitespace-pre-wrap", !isExpanded && "line-clamp-2,")}>
+                <p className={cn("text-sm whitespace-pre-wrap", !isExpanded && "line-clamp-2")}>
                     {description || "No description"}
                 </p>
                 <div className="flex items-center gap-1 mt-4 text-sm font-medium">

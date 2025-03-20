@@ -49,7 +49,7 @@ export const POST = async(request: Request)=>{
     switch (payload.type as WebhookEvent["type"]){
         case "video.asset.created": {
             const data = payload.data as VideoAssetCreatedWebhookEvent["data"];
-
+            console.log("Creating video:", {uploadId: data.upload_id});
             if(!data.upload_id){
                 return new Response("No upload ID found", {status: 400});
             }
