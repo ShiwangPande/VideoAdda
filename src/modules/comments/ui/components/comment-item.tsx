@@ -187,7 +187,7 @@ export const CommentItem = ({
                         )}
                     </div>
                 </div>
-                {comment.user.clerkId !== userId && variant =="comment" && (
+                {variant =="comment" && (
                 <DropdownMenu modal={false}>
                     <DropdownMenuTrigger asChild>
                         <Button variant="ghost" size="icon" className="size-8">
